@@ -60,15 +60,15 @@ public class SwerveModule {
          driveMotor.set(ControlMode.MotionMagic, position);
     }
     
-    public int getVelocity(){
+    public double getVelocity(){
         return driveMotor.getSelectedSensorVelocity();
     }
     
-    public int getSteerPosition(){
+    public double getSteerPosition(){
         return steerMotor.getSelectedSensorPosition();
     }
 
-    public int getDrivePosition(){
+    public double getDrivePosition(){
         return driveMotor.getSelectedSensorPosition();
     }
     
