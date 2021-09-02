@@ -37,17 +37,17 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
-    // RobotContainer.m_gyro.reset();
-    // RobotContainer.m_drivetrain.init();
-    RobotContainer.m_magazine.init();
+    RobotContainer.m_gyro.reset();
+    RobotContainer.m_drivetrain.init();
+    // RobotContainer.m_magazine.init();
     // RobotContainer.m_intake.init();
-    RobotContainer.m_shooter.init();
+    // RobotContainer.m_shooter.init();
     // RobotContainer.m_lift.init();
-    RobotContainer.m_tilt.init();
+    // RobotContainer.m_tilt.init();
     // RobotContainer.m_colorAndZipline.init();
 
     bootCycle = true;
-    RobotContainer.m_drivetrain.setTargetTrackMode(true);
+    // RobotContainer.m_drivetrain.setTargetTrackMode(true);
   }
 
   /**
@@ -92,7 +92,7 @@ public class Robot extends TimedRobot {
   public void disabledInit() {
     System.out.println("//////////////////// DISABLED Init /////////////////");
     // RobotContainer.m_led.clearLED();
-    RobotContainer.m_tilt.stopTilt();
+    // RobotContainer.m_tilt.stopTilt();
   }
 
   @Override
@@ -109,9 +109,9 @@ public class Robot extends TimedRobot {
     Timer.delay(.5);
 
     if (bootCycle && enableCalibration){
-      // CommandScheduler.getInstance().schedule(new CalibrateDriveTrain());
+      CommandScheduler.getInstance().schedule(new CalibrateDriveTrain());
       CommandScheduler.getInstance().schedule(new CalibrateTilt());
-    } else /*CommandScheduler.getInstance().schedule(new TiltMagToLow())*/;
+    } else CommandScheduler.getInstance().schedule(new TiltMagToLow());
     
     CommandScheduler.getInstance().schedule(new LoadMagazine());
 
@@ -135,17 +135,17 @@ public class Robot extends TimedRobot {
     Timer.delay(.5);
 
     if (bootCycle && enableCalibration){
-      // CommandScheduler.getInstance().schedule(new CalibrateDriveTrain());
-      CommandScheduler.getInstance().schedule(new CalibrateTilt());
+      CommandScheduler.getInstance().schedule(new CalibrateDriveTrain());
+      // CommandScheduler.getInstance().schedule(new CalibrateTilt());
     } /*else CommandScheduler.getInstance().schedule(new TiltMagToLow());*/
 
-    // RobotContainer.m_drivetrain.maxDrivePower(1.);
+    RobotContainer.m_drivetrain.maxDrivePower(.1);
 
-    RobotContainer.m_shooterCam.setCamMode(1); // default to regular vision mode, not tracking mode
-    RobotContainer.m_shooterCam.ledOff();
+    // RobotContainer.m_shooterCam.setCamMode(1); // default to regular vision mode, not tracking mode
+    // RobotContainer.m_shooterCam.ledOff();
 
-    RobotContainer.m_intakeCam.setCamMode(1); // default to regular vision mode, not tracking mode
-    RobotContainer.m_intakeCam.ledOff();
+    // RobotContainer.m_intakeCam.setCamMode(1); // default to regular vision mode, not tracking mode
+    // RobotContainer.m_intakeCam.ledOff();
 
     // CommandScheduler.getInstance().schedule(new DriveSpeed());
     // CommandScheduler.getInstance().run();
@@ -153,8 +153,8 @@ public class Robot extends TimedRobot {
     bootCycle = false;
 
     System.out.println("//////////////////// Teleop /////////////////");
-    CommandScheduler.getInstance().schedule(new LoadMagazine());
-    // CommandScheduler.getInstance().schedule(new Drive());
+    // CommandScheduler.getInstance().schedule(new LoadMagazine());
+    CommandScheduler.getInstance().schedule(new Drive());
     // RobotContainer.m_led.clearLED();
   }
 
