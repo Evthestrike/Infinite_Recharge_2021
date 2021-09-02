@@ -303,15 +303,16 @@ public class AutoPaths {
         startDegree = RobotContainer.m_gyro.getYawDeg();
 
         CommandScheduler.getInstance().schedule(new TargetTrackModeEngage());
-        // CommandScheduler.getInstance().run();
+        CommandScheduler.getInstance().run();
 
         RobotContainer.m_drivetrain.move(0, 0, 0);
         while (RobotContainer.m_drivetrain.getTxAvg() < -1. && RobotContainer.m_drivetrain.getTxAvg() > 1.) {
+            // Calling move allows the robot to use the drivetrain to aim at the target
             RobotContainer.m_drivetrain.move(0, 0, 0);
         }
 
         CommandScheduler.getInstance().schedule(new TargetTrackModeDisengage());
-        // CommandScheduler.getInstance().run();
+        CommandScheduler.getInstance().run();
 
         CommandScheduler.getInstance().schedule(new ShootBall());
         while (!RobotContainer.m_ShootBall.getForceEnd()) {
