@@ -163,10 +163,10 @@ public class SwerveDrive {
         boolean rotateRearRight = true;
      
         // Start all four steer motors
-        frontRight.setSteerSpeed(.1);
-        frontLeft.setSteerSpeed(.1);
-        rearLeft.setSteerSpeed(.1);
-        rearRight.setSteerSpeed(.1);   
+        frontRight.setSteerSpeed(.2);
+        frontLeft.setSteerSpeed(.2);
+        rearLeft.setSteerSpeed(.2);
+        rearRight.setSteerSpeed(.2);   
  
         //While the motors are running check to see when the encoder has been reset and stop the motor
         while (rotate) {
@@ -206,10 +206,10 @@ public class SwerveDrive {
         delay(100);
 
         // Start all four steer motors again now that we know where they are
-        frontRight.setSteerSpeed(.1);
-        frontLeft.setSteerSpeed(.1);
-        rearLeft.setSteerSpeed(.1);
-        rearRight.setSteerSpeed(.1);   
+        frontRight.setSteerSpeed(.2);
+        frontLeft.setSteerSpeed(.2);
+        rearLeft.setSteerSpeed(.2);
+        rearRight.setSteerSpeed(.2);   
 
         // Delay to insure we are off the magnet for the cal sensor
         delay(100);
