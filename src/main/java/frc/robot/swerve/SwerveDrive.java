@@ -54,7 +54,7 @@ public class SwerveDrive {
 
     private ArrayList<Double> swerveVectors = new ArrayList<Double>(8);
     private ArrayList<Double> driveDistanceVectors = new ArrayList<Double>(Arrays.asList(0.,0.,0.,0.));
-    private int velocity = 0;
+    private double velocity = 0;
     
     public SwerveDrive(SwerveModule frontRightWheel, SwerveModule frontLeftWheel, SwerveModule rearLeftWheel, SwerveModule rearRightWheel){
         frontRight = frontRightWheel;
@@ -92,10 +92,10 @@ public class SwerveDrive {
     }
 
     private ArrayList<Double> getDriveMotorPositions() {
-        driveDistanceVectors.set(0, (double)frontRight.getDrivePosition());
-        driveDistanceVectors.set(1, (double)frontLeft.getDrivePosition());
-        driveDistanceVectors.set(2, (double)rearLeft.getDrivePosition());
-        driveDistanceVectors.set(3, (double)rearRight.getDrivePosition());
+        driveDistanceVectors.set(0, frontRight.getDrivePosition());
+        driveDistanceVectors.set(1, frontLeft.getDrivePosition());
+        driveDistanceVectors.set(2, rearLeft.getDrivePosition());
+        driveDistanceVectors.set(3, rearRight.getDrivePosition());
         return driveDistanceVectors;
     }
     
