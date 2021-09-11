@@ -33,7 +33,7 @@ public class Magazine extends SubsystemBase {
   private boolean isExistingBall;
   private boolean canSeeBall;
   private boolean hasSeenBall = false;
-  private int ballCount = 0;
+  // private int ballCount = 0;
   private int ballReadyCount = 0;
   private boolean stopLoad = false;
   private boolean stopShoot = false;
@@ -139,19 +139,19 @@ public class Magazine extends SubsystemBase {
     // This removes the command that loads the magazine from the scheduler stack so
     // that it does not interfere with the magazine being emptied.
 
-    if (hasSeenBall) {
-      // This tests whether the ball that was being unloaded has finished unloading.
-      if (!canSeeBall) {
-        ballCount -= 1;
-        hasSeenBall = false;
-      }
-    } else {
-      // This tests if there is a ball currently being unloaded in front of the
-      // sensor.
-      if (canSeeBall) {
-        hasSeenBall = true;
-      }
-    }
+    // if (hasSeenBall) {
+    //   // This tests whether the ball that was being unloaded has finished unloading.
+    //   if (!canSeeBall) {
+    //     ballCount -= 1;
+    //     hasSeenBall = false;
+    //   }
+    // } else {
+    //   // This tests if there is a ball currently being unloaded in front of the
+    //   // sensor.
+    //   if (canSeeBall) {
+    //     hasSeenBall = true;
+    //   }
+    // }
 
     if (magPosition < RobotMap.MAGAZINE_LENGTH) {
       advanceMagazine();    
@@ -164,7 +164,7 @@ public class Magazine extends SubsystemBase {
       
       // RobotContainer.m_led.clearStatusLED();
       // RobotContainer.m_tilt.setTiltLow();
-      ballCount = 0;
+      // ballCount = 0;
     }
     // This Reschedules the load magazine command and stops the shoot ball command
     // after the mag has finished unloading and the shoot button is no longer being
@@ -172,9 +172,9 @@ public class Magazine extends SubsystemBase {
     return stopShoot;
   }
 
-  public int getBallCount() {
-    return ballCount;
-  }
+  // public int getBallCount() {
+  //   return ballCount;
+  // }
 
   public boolean getMagFull() {
     return ballInFifthPos.get();
