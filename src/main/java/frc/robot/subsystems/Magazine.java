@@ -48,12 +48,12 @@ public class Magazine extends SubsystemBase {
 
   public void advanceMagazine() {
     magazineMotor.set(ControlMode.PercentOutput, .4);
-    System.out.println("advancing mag");
+    // System.out.println("advancing mag");
   }
 
   public void stopMagazine() {
     magazineMotor.set(ControlMode.PercentOutput, 0.);
-    System.out.println("stopping mag");
+    // System.out.println("stopping mag");
   }
 
   // *** a command is put on the stack that calls this method every cycle of the
@@ -67,43 +67,53 @@ public class Magazine extends SubsystemBase {
 
     if (!magFull) {
       stopLoad = false;
-      if (ballReady) {
-        ballReadyCount += 1;
-      }
+      // if (ballReady) {
+      //   ballReadyCount += 1;
+      // }
 
-      // This conditional is true after the ball is ready to be loaded for .1 seconds
-      if (ballReadyCount == 5) {
-        // This captures the state of the first ball position when we start the motor so
-        // that we know if there was already a ball there.
+      // // This conditional is true after the ball is ready to be loaded for .1 seconds
+      // if (ballReadyCount == 5) {
+      //   // This captures the state of the first ball position when we start the motor so
+      //   // that we know if there was already a ball there.
+      //   advanceMagazine();
+      // }
+
+      // if (ballLoaded) {
+      //   advanceMagazine();
+      // }
+      
+      // if (ballReadyCount >= 5) {
+      //   // This tests to see if there is no longer an existing ball in the first
+      //   // position
+      //   // if (isExistingBall) {
+      //   // isExistingBall = ballLoaded;
+      //   // }
+
+      //   // This tests if the new ball has been loaded
+      //   // if (!ballLoaded && isExistingBall) {
+      //   //   stopMagazine();
+
+      //   //   if (ballCount < 5) {
+      //   //     ballCount += 1;
+      //   //   }
+
+      //   //   ballReadyCount = 0;
+      //   // }
+      //   // isExistingBall = ballLoaded;
+      // }
+      if (ballLoaded || ballReady) {
         advanceMagazine();
-      }
-
-      if (ballReadyCount >= 5) {
-        // This tests to see if there is no longer an existing ball in the first
-        // position
-        // if (isExistingBall) {
-        // isExistingBall = ballLoaded;
-        // }
-
-        // This tests if the new ball has been loaded
-        if (!ballLoaded && isExistingBall) {
-          stopMagazine();
-
-          if (ballCount < 5) {
-            ballCount += 1;
-          }
-
-          ballReadyCount = 0;
-        }
-        isExistingBall = ballLoaded;
-      }
-      stopLoad = false;
-    } else {
-      if (ballReadyCount >= 5) {
+      } else {
         stopMagazine();
-        ballReadyCount = 0;
-        // RobotContainer.m_led.magFullLED();
       }
+
+    } else {
+      // if (ballReadyCount >= 5) {
+      //   stopMagazine();
+      //   ballReadyCount = 0;
+      //   // RobotContainer.m_led.magFullLED();
+      // }
+      stopMagazine();
       stopLoad = true;
     }
   }
@@ -153,7 +163,7 @@ public class Magazine extends SubsystemBase {
       // RobotContainer.m_led.driveLED();
       
       // RobotContainer.m_led.clearStatusLED();
-      RobotContainer.m_tilt.setTiltLow();
+      // RobotContainer.m_tilt.setTiltLow();
       ballCount = 0;
     }
     // This Reschedules the load magazine command and stops the shoot ball command
