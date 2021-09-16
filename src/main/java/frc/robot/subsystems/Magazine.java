@@ -51,6 +51,10 @@ public class Magazine extends SubsystemBase {
     // System.out.println("advancing mag");
   }
 
+  public void reverseMagazine() {
+    magazineMotor.set(ControlMode.PercentOutput, .4);
+  }
+
   public void stopMagazine() {
     magazineMotor.set(ControlMode.PercentOutput, 0.);
     // System.out.println("stopping mag");
@@ -66,54 +70,62 @@ public class Magazine extends SubsystemBase {
     ballLoaded = !ballInFirstPos.get();
 
     if (!magFull) {
-      stopLoad = false;
       // if (ballReady) {
-      //   ballReadyCount += 1;
+      // ballReadyCount += 1;
       // }
 
-      // // This conditional is true after the ball is ready to be loaded for .1 seconds
+      // // This conditional is true after the ball is ready to be loaded for .1
+      // seconds
       // if (ballReadyCount == 5) {
-      //   // This captures the state of the first ball position when we start the motor so
-      //   // that we know if there was already a ball there.
-      //   advanceMagazine();
+      // // This captures the state of the first ball position when we start the motor
+      // so
+      // // that we know if there was already a ball there.
+      // advanceMagazine();
       // }
 
       // if (ballLoaded) {
-      //   advanceMagazine();
+      // advanceMagazine();
       // }
-      
+
       // if (ballReadyCount >= 5) {
-      //   // This tests to see if there is no longer an existing ball in the first
-      //   // position
-      //   // if (isExistingBall) {
-      //   // isExistingBall = ballLoaded;
-      //   // }
+      // // This tests to see if there is no longer an existing ball in the first
+      // // position
+      // // if (isExistingBall) {
+      // // isExistingBall = ballLoaded;
+      // // }
 
-      //   // This tests if the new ball has been loaded
-      //   // if (!ballLoaded && isExistingBall) {
-      //   //   stopMagazine();
+      // // This tests if the new ball has been loaded
+      // // if (!ballLoaded && isExistingBall) {
+      // // stopMagazine();
 
-      //   //   if (ballCount < 5) {
-      //   //     ballCount += 1;
-      //   //   }
+      // // if (ballCount < 5) {
+      // // ballCount += 1;
+      // // }
 
-      //   //   ballReadyCount = 0;
-      //   // }
-      //   // isExistingBall = ballLoaded;
+      // // ballReadyCount = 0;
+      // // }
+      // // isExistingBall = ballLoaded;
       // }
+      stopLoad = false;
+
       if (ballLoaded || ballReady) {
+        ballReadyCount += 1;
+      } else {
+        ballReadyCount = 0;
+      }
+
+      // After either sensor senses the ball for more than 5 scheduler cycles, the
+      // ball will be loaded. This keeps the sensors from sensing things that aren't
+      // actually balls
+      if (ballReadyCount >= 5) {
         advanceMagazine();
       } else {
         stopMagazine();
       }
 
     } else {
-      // if (ballReadyCount >= 5) {
-      //   stopMagazine();
-      //   ballReadyCount = 0;
-      //   // RobotContainer.m_led.magFullLED();
-      // }
       stopMagazine();
+      ballReadyCount = 0;
       stopLoad = true;
     }
   }
@@ -129,7 +141,8 @@ public class Magazine extends SubsystemBase {
     stopShoot = false;
     magPosition = magazineMotor.getSelectedSensorPosition();
 
-    if (CommandScheduler.getInstance().isScheduled(new LoadMagazine())) stopLoad = true;
+    if (CommandScheduler.getInstance().isScheduled(new LoadMagazine()))
+      stopLoad = true;
 
     // This gets the sensor values every cycle of the scheduler
     canSeeBall = !ballInFifthPos.get();
@@ -140,28 +153,29 @@ public class Magazine extends SubsystemBase {
     // that it does not interfere with the magazine being emptied.
 
     // if (hasSeenBall) {
-    //   // This tests whether the ball that was being unloaded has finished unloading.
-    //   if (!canSeeBall) {
-    //     ballCount -= 1;
-    //     hasSeenBall = false;
-    //   }
+    // // This tests whether the ball that was being unloaded has finished
+    // unloading.
+    // if (!canSeeBall) {
+    // ballCount -= 1;
+    // hasSeenBall = false;
+    // }
     // } else {
-    //   // This tests if there is a ball currently being unloaded in front of the
-    //   // sensor.
-    //   if (canSeeBall) {
-    //     hasSeenBall = true;
-    //   }
+    // // This tests if there is a ball currently being unloaded in front of the
+    // // sensor.
+    // if (canSeeBall) {
+    // hasSeenBall = true;
+    // }
     // }
 
     if (magPosition < RobotMap.MAGAZINE_LENGTH) {
-      advanceMagazine();    
+      advanceMagazine();
     } else {
       stopMagazine();
       RobotContainer.m_shooter.stopMotors();
       CommandScheduler.getInstance().schedule(new LoadMagazine());
       stopShoot = true;
       // RobotContainer.m_led.driveLED();
-      
+
       // RobotContainer.m_led.clearStatusLED();
       RobotContainer.m_tilt.setTiltLow();
       // ballCount = 0;
@@ -173,7 +187,7 @@ public class Magazine extends SubsystemBase {
   }
 
   // public int getBallCount() {
-  //   return ballCount;
+  // return ballCount;
   // }
 
   public boolean getMagFull() {
@@ -208,15 +222,13 @@ public class Magazine extends SubsystemBase {
     System.out.println("  - Magazine Motor Initialized");
   }
 
-  private void delay(int msec){
-    try{
-        Thread.sleep(msec);
-    }
-    catch (Exception e){
-        System.out.println("Error in Waitloop");
+  private void delay(int msec) {
+    try {
+      Thread.sleep(msec);
+    } catch (Exception e) {
+      System.out.println("Error in Waitloop");
     }
   }
-
 
   @Override
   public void periodic() {
