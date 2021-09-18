@@ -29,6 +29,9 @@ public class ShootBall extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    RobotContainer.m_magazine.reverseMagazine();
+    delay(100);
+    RobotContainer.m_magazine.stopMagazine();
     RobotContainer.m_shooter.shootBall(RobotContainer.m_drivetrain.getTargetTrackMode());
     RobotContainer.m_magazine.resetPosition();
     delay(800);
