@@ -34,7 +34,7 @@ public class Magazine extends SubsystemBase {
   private boolean canSeeBall;
   private boolean hasSeenBall = false;
   // private int ballCount = 0;
-  private int ballReadyCount = 0;
+  // private int ballReadyCount = 0;
   private boolean stopLoad = false;
   private boolean stopShoot = false;
   private double magPosition;
@@ -52,7 +52,7 @@ public class Magazine extends SubsystemBase {
   }
 
   public void reverseMagazine() {
-    magazineMotor.set(ControlMode.PercentOutput, .4);
+    magazineMotor.set(ControlMode.PercentOutput, -.4);
   }
 
   public void stopMagazine() {
@@ -109,23 +109,25 @@ public class Magazine extends SubsystemBase {
       stopLoad = false;
 
       if (ballLoaded || ballReady) {
-        ballReadyCount += 1;
+        // ballReadyCount += 1;
+        advanceMagazine();
       } else {
-        ballReadyCount = 0;
+        // ballReadyCount = 0;
+        stopMagazine();
       }
 
       // After either sensor senses the ball for more than 5 scheduler cycles, the
       // ball will be loaded. This keeps the sensors from sensing things that aren't
       // actually balls
-      if (ballReadyCount >= 5) {
-        advanceMagazine();
-      } else {
-        stopMagazine();
-      }
+      // if (ballReadyCount >= 5) {
+      //   advanceMagazine();
+      // } else {
+      //   stopMagazine();
+      // }
 
     } else {
       stopMagazine();
-      ballReadyCount = 0;
+      // ballReadyCount = 0;
       stopLoad = true;
     }
   }
