@@ -124,19 +124,20 @@ public class RobotContainer {
     btnLT.whenReleased(m_DriveSpeed, false);
     btnLB.whenPressed(m_DriveSpeed,false);
     btnLB.whenReleased(m_DriveSpeed, false);
+    btnRB.whenPressed(m_IntakeBall, false);
+    btnRB.whenReleased(m_StopIntake, false);
 
     btnStart.whenPressed(m_RetractWinch, false);
     btnY.whenPressed(m_TargetTrackModeEngage, false);
     btnY.whenReleased(m_TargetTrackModeDisengage, false);
+    btnX.whenPressed(m_ReverseIntake, false);
+    btnX.whenReleased(m_StopIntake, false);
 
     // Operator Buttons
     obtnSquare.whenPressed(m_RotateWheelToColor, false);
     obtnTriangle.whenPressed(m_TiltToControlWheel, false);
     obtnO.whenPressed(m_RotateWheel3Times, false);
-    obtnR2.whenPressed(m_IntakeBall, false);
-    obtnR2.whenReleased(m_StopIntake, false);
-    obtnL2.whenPressed(m_ReverseIntake, false);
-    obtnL2.whenReleased(m_StopIntake, false);
+
     obtnSelect.whenPressed(m_MoveZipline, false);
     obtnX.whenPressed(m_TiltMagToLow, false);
     obtnLeftStick.whenPressed(m_TiltNudge, false);
