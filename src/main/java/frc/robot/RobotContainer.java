@@ -71,15 +71,15 @@ public class RobotContainer {
   private static Joystick swerveJoy = new Joystick(0);
 
   //Instantiate the buttons 0-11
-  private static JoystickButton btnSquare = new JoystickButton(swerveJoy, 1); //Square Button - Rotate 180 CCW
-  private static JoystickButton btnX = new JoystickButton(swerveJoy, 2); //X Button
-  private static JoystickButton btnO = new JoystickButton(swerveJoy, 3); //O Button - Rotate 180 CW
-  private static JoystickButton btnTriangle = new JoystickButton(swerveJoy, 4); //Triange Button
-  private static JoystickButton btnL1 = new JoystickButton(swerveJoy, 5); //L1 Button - Ball Targetting / Normal Drive Camera While !Pressed
-  private static JoystickButton btnR1 = new JoystickButton(swerveJoy, 6); //R1 Button - Field Centric
-  private static JoystickButton btnL2 = new JoystickButton(swerveJoy, 7); //L2 Button - Hatch Targetting / Normal Drive Camera While !Pressed
-  private static JoystickButton btnR2 = new JoystickButton(swerveJoy, 8); //R2 Button - Robot Centric
-  private static JoystickButton btnSelect = new JoystickButton(swerveJoy, 9); //Select Button - Level 2 Climb
+  private static JoystickButton btnX = new JoystickButton(swerveJoy, 1); //Square Button - Rotate 180 CCW
+  private static JoystickButton btnA = new JoystickButton(swerveJoy, 2); //X Button
+  private static JoystickButton btnB = new JoystickButton(swerveJoy, 3); //O Button - Rotate 180 CW
+  private static JoystickButton btnY = new JoystickButton(swerveJoy, 4); //Triange Button
+  private static JoystickButton btnLB = new JoystickButton(swerveJoy, 5); //L1 Button - Ball Targetting / Normal Drive Camera While !Pressed
+  private static JoystickButton btnRB = new JoystickButton(swerveJoy, 6); //R1 Button - Field Centric
+  private static JoystickButton btnLT = new JoystickButton(swerveJoy, 7); //L2 Button - Hatch Targetting / Normal Drive Camera While !Pressed
+  private static JoystickButton btnRT = new JoystickButton(swerveJoy, 8); //R2 Button - Robot Centric
+  private static JoystickButton btnBack = new JoystickButton(swerveJoy, 9); //Select Button - Level 2 Climb
   private static JoystickButton btnStart = new JoystickButton(swerveJoy, 10); //Start Button - Level 3 Climb
   private static JoystickButton btnLeftStick = new JoystickButton(swerveJoy, 11); //Left Stick Button
   private static JoystickButton btnRightStick = new JoystickButton(swerveJoy, 12); //Right Stick Button
@@ -88,15 +88,15 @@ public class RobotContainer {
   public static Joystick operatorJoy = new Joystick(1);
 
   //Instantiate the buttons 0-11
-  private static JoystickButton obtnX = new JoystickButton(operatorJoy, 1); //X Button - Lift to Middle Goal
-  private static JoystickButton obtnA = new JoystickButton(operatorJoy, 2); //A Button - Lift to Low Goal
-  private static JoystickButton obtnB = new JoystickButton(operatorJoy, 3); //B Button - Lift to Cargo Ship
-  private static JoystickButton obtnY = new JoystickButton(operatorJoy, 4); //Y Button - Lift to High Goal
-  private static JoystickButton obtnLB = new JoystickButton(operatorJoy, 5); //LB Button - Hatch Grab
-  private static JoystickButton obtnRB = new JoystickButton(operatorJoy, 6); //RB Button - Hatch Release
-  private static JoystickButton obtnLT = new JoystickButton(operatorJoy, 7); //LT Button - Ball Intake
-  private static JoystickButton obtnRT = new JoystickButton(operatorJoy, 8); //RT Button - Ball Shoot
-  private static JoystickButton obtnBack = new JoystickButton(operatorJoy, 9); //Back Button - Level 2 climb boomerang level
+  private static JoystickButton obtnSquare = new JoystickButton(operatorJoy, 1); //X Button - Lift to Middle Goal
+  private static JoystickButton obtnX = new JoystickButton(operatorJoy, 2); //A Button - Lift to Low Goal
+  private static JoystickButton obtnO = new JoystickButton(operatorJoy, 3); //B Button - Lift to Cargo Ship
+  private static JoystickButton obtnTriangle = new JoystickButton(operatorJoy, 4); //Y Button - Lift to High Goal
+  private static JoystickButton obtnL1 = new JoystickButton(operatorJoy, 5); //LB Button - Hatch Grab
+  private static JoystickButton obtnR1 = new JoystickButton(operatorJoy, 6); //RB Button - Hatch Release
+  private static JoystickButton obtnL2 = new JoystickButton(operatorJoy, 7); //LT Button - Ball Intake
+  private static JoystickButton obtnR2 = new JoystickButton(operatorJoy, 8); //RT Button - Ball Shoot
+  private static JoystickButton obtnSelect = new JoystickButton(operatorJoy, 9); //Back Button - Level 2 climb boomerang level
   private static JoystickButton obtnStart = new JoystickButton(operatorJoy, 10); //Start Button  - Level 3 climb boomerang level
   private static JoystickButton obtnLeftStick = new JoystickButton(operatorJoy, 11); //Left Stick Button
   private static JoystickButton obtnRightStick = new JoystickButton(operatorJoy, 12); //Right Stick Button - Reverse Ball Intake
@@ -118,27 +118,27 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Driver Buttons
 
-    btnX.whenPressed(m_InvertDrivetrain, false);
-    btnR2.whenPressed(m_ShootBall, true);
-    btnL2.whenPressed(m_DriveSpeed, false);
-    btnL2.whenReleased(m_DriveSpeed, false);
-    btnL1.whenPressed(m_DriveSpeed,false);
-    btnL1.whenReleased(m_DriveSpeed, false);
+    btnA.whenPressed(m_InvertDrivetrain, false);
+    btnRT.whenPressed(m_ShootBall, true);
+    btnLT.whenPressed(m_DriveSpeed, false);
+    btnLT.whenReleased(m_DriveSpeed, false);
+    btnLB.whenPressed(m_DriveSpeed,false);
+    btnLB.whenReleased(m_DriveSpeed, false);
 
     btnStart.whenPressed(m_RetractWinch, false);
-    btnTriangle.whenPressed(m_TargetTrackModeEngage, false);
-    btnTriangle.whenReleased(m_TargetTrackModeDisengage, false);
+    btnY.whenPressed(m_TargetTrackModeEngage, false);
+    btnY.whenReleased(m_TargetTrackModeDisengage, false);
 
     // Operator Buttons
-    obtnX.whenPressed(m_RotateWheelToColor, false);
-    obtnY.whenPressed(m_TiltToControlWheel, false);
-    obtnB.whenPressed(m_RotateWheel3Times, false);
-    obtnRT.whenPressed(m_IntakeBall, false);
-    obtnRT.whenReleased(m_StopIntake, false);
-    obtnLT.whenPressed(m_ReverseIntake, false);
-    obtnLT.whenReleased(m_StopIntake, false);
-    obtnBack.whenPressed(m_MoveZipline, false);
-    obtnA.whenPressed(m_TiltMagToLow, false);
+    obtnSquare.whenPressed(m_RotateWheelToColor, false);
+    obtnTriangle.whenPressed(m_TiltToControlWheel, false);
+    obtnO.whenPressed(m_RotateWheel3Times, false);
+    obtnR2.whenPressed(m_IntakeBall, false);
+    obtnR2.whenReleased(m_StopIntake, false);
+    obtnL2.whenPressed(m_ReverseIntake, false);
+    obtnL2.whenReleased(m_StopIntake, false);
+    obtnSelect.whenPressed(m_MoveZipline, false);
+    obtnX.whenPressed(m_TiltMagToLow, false);
     obtnLeftStick.whenPressed(m_TiltNudge, false);
   }
 
@@ -167,15 +167,15 @@ public class RobotContainer {
   }
 
   public static boolean getShootButtonState() {
-    return btnR2.get();
+    return btnRT.get();
   }
 
   public static boolean getMediumSpeedDriveButtonState() {
-    return btnL2.get();
+    return btnLT.get();
   }
 
   public static boolean getLowSpeedDriveButtonState() {
-    return btnL1.get();
+    return btnLB.get();
   }
 
   /**
