@@ -77,13 +77,15 @@ public class Robot extends TimedRobot {
     // SmartDashboard.putNumber("Gyro Pitch", m_gyro.getPitchDeg());
     // SmartDashboard.putNumber("Gyro Roll", m_gyro.getRollDeg());
     // SmartDashboard.putNumber("Ball Count" , RobotContainer.m_magazine.getBallCount());
-    SmartDashboard.putBoolean("BallReady", RobotContainer.m_magazine.getBallReady());
-    SmartDashboard.putBoolean("BallLoaded", RobotContainer.m_magazine.getBallLoaded());
-    SmartDashboard.putBoolean("Mag Full", RobotContainer.m_magazine.getMagFull());
-    SmartDashboard.putNumber("TyAverage", RobotContainer.m_drivetrain.getTyAvg());
-    SmartDashboard.putNumber("TargetTiltPos", RobotContainer.m_drivetrain.getTargetTiltPos());
+    // SmartDashboard.putBoolean("BallReady", RobotContainer.m_magazine.getBallReady());
+    // SmartDashboard.putBoolean("BallLoaded", RobotContainer.m_magazine.getBallLoaded());
+    // SmartDashboard.putBoolean("Mag Full", RobotContainer.m_magazine.getMagFull());
+    // SmartDashboard.putNumber("TyAverage", RobotContainer.m_drivetrain.getTyAvg());
+    // SmartDashboard.putNumber("TargetTiltPos", RobotContainer.m_drivetrain.getTargetTiltPos());
+    // SmartDashboard.putNumber("TxAverage", RobotContainer.m_drivetrain.getTxAvg());
     SmartDashboard.putNumber("distance to target", RobotContainer.m_drivetrain.getDistance());
-    SmartDashboard.putData(CommandScheduler.getInstance());
+    SmartDashboard.putNumber("Tilt position", RobotContainer.m_tilt.getTiltPosition());
+    // SmartDashboard.putData(CommandScheduler.getInstance());
   }
   /**
    * This function is called once each time the robot enters Disabled mode.
@@ -142,8 +144,8 @@ public class Robot extends TimedRobot {
 
     RobotContainer.m_drivetrain.maxDrivePower(.1);
 
-    // RobotContainer.m_shooterCam.setCamMode(1); // default to regular vision mode, not tracking mode
-    // RobotContainer.m_shooterCam.ledOff();
+    RobotContainer.m_shooterCam.setCamMode(1); // default to regular vision mode, not tracking mode
+    RobotContainer.m_shooterCam.ledOff();
 
     // RobotContainer.m_intakeCam.setCamMode(1); // default to regular vision mode, not tracking mode
     // RobotContainer.m_intakeCam.ledOff();
