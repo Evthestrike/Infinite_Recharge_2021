@@ -92,6 +92,7 @@ public class RobotMap {
     public static final double ROLL_THRESHOLD = 15.; //Pitch in degrees
     
     // Vision System Constants
+    // HSV for targeting H34-95 S13-195 V220-255
     public static final double CAMERA_MOUNTING_ANGLE = 30.;  //Units are in degrees and referenced to X axis, with CCW being positive
     public static final double CAMERA_MOUNTING_HEIGHT = 25.25;  //Units are in inches //TODO: readjust
     public static final double TARGET_HEIGHT = 98.; //Units are in inches
