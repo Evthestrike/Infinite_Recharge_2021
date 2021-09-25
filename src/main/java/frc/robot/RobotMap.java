@@ -92,7 +92,7 @@ public class RobotMap {
     public static final double ROLL_THRESHOLD = 15.; //Pitch in degrees
     
     // Vision System Constants
-    // HSV for targeting H34-95 S13-195 V220-255
+    // HSV for targeting H34-95 S13-195 V210-255
     public static final double CAMERA_MOUNTING_ANGLE = 30.;  //Units are in degrees and referenced to X axis, with CCW being positive
     public static final double CAMERA_MOUNTING_HEIGHT = 25.25;  //Units are in inches //TODO: readjust
     public static final double TARGET_HEIGHT = 98.; //Units are in inches
@@ -112,7 +112,7 @@ public class RobotMap {
     public static final double MAGAZINE_LOW = -74766;
     public static final double MAGAZINE_VERTICAL = -2048.;
     public static final double PULSES_PER_DEGREE = MAGAZINE_LOW / 65.; // 65 degrees of travel
-    public static final double PULSES_PER_RADIAN = PULSES_PER_DEGREE * Math.PI / 180.;
+    public static final double PULSES_PER_RADIAN = MAGAZINE_LOW / 1.134;
     public static final double MAGAZINE_CONTROL_WHEEL = -39000.;
 
     // Shooter Constants
