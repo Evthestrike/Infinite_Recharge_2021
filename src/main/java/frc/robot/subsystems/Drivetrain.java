@@ -211,10 +211,11 @@ public class Drivetrain extends SubsystemBase {
 
       // System.out.println(txAverage);
 
-      if (targetTrackMode)
+      if (targetTrackMode){
         str = 0.;
         fwd = 0.;
-      
+      }
+
       rcw = .05 * tx; // .05 * txAverage;
 
       // take in 10 pitch readings and average them out
@@ -231,9 +232,9 @@ public class Drivetrain extends SubsystemBase {
 
       distance = (RobotMap.DIFFERENTIAL_HEIGHT / Math.tan(Math.toRadians(RobotMap.CAMERA_MOUNTING_ANGLE + tyAverage))) / 12;
 
-      tiltPosition = RobotMap.SHOOT_ANGLES.get((int) Math.round(distance));
-
-      RobotContainer.m_tilt.setTiltAngle(tiltPosition);
+      // tiltPosition = RobotMap.SHOOT_ANGLES.get((int) Math.round(distance));
+      // tiltPosition = RobotMap.PULSES_PER_DEGREE * Math.toDegrees(Math.atan(RobotMap.DIFFERENTIAL_HEIGHT / distance));
+      // RobotContainer.m_tilt.setTiltAngle(tiltPosition);
     }
 
     if (!isDriveInverted) {
