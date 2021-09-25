@@ -198,21 +198,24 @@ public class Drivetrain extends SubsystemBase {
       ty = RobotContainer.m_shooterCam.getTy();
 
       // take in 10 pitch readings and average them out
-      if (txQueue.size() < 10) {
-        txQueue.add(tx);
-        queueSumX += tx;
-      } else {
-        queueSumX -= txQueue.remove();
-        txQueue.add(tx);
-        queueSumX += tx;
-      }
+      // if (txQueue.size() < 2) {
+      //   txQueue.add(tx);
+      //   queueSumX += tx;
+      // } else {
+      //   queueSumX -= txQueue.remove();
+      //   txQueue.add(tx);
+      //   queueSumX += tx;
+      // }
 
-      txAverage = queueSumX / txQueue.size();
+      // txAverage = queueSumX / txQueue.size();
+
+      // System.out.println(txAverage);
 
       if (targetTrackMode)
         str = 0.;
-
-      rcw = .05 * txAverage;
+        fwd = 0.;
+      
+      rcw = .05 * tx; // .05 * txAverage;
 
       // take in 10 pitch readings and average them out
       if (tyQueue.size() < 10) {
